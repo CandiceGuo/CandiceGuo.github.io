@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java基础(1) | Candice&#39; Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="天真，勤奋" />
+  
+  
+  
+  
+  <meta name="keywords" content="技术,语言,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础(1)">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/java基础-1/index.html">
+<meta property="og:site_name" content="Candice&#39; Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-11T08:44:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础(1)">
+  
+    <link rel="alternate" href="/atom.xml" title="Candice&#39; Blog" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-java基础-1" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      java基础(1)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/08/11/java基础-1/" class="article-date">
+	  <time datetime="2017-08-11T08:41:57.000Z" itemprop="datePublished">2017-08-11</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/java开发/">java开发</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<h2 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h2><h3 id="java语言的优点"><a href="#java语言的优点" class="headerlink" title="java语言的优点"></a>java语言的优点</h3><blockquote>
+<p>“平台无关性”：java语言可以一次编译到处运行，意思就是编译后的代码可以再多种平台上运行，由于java是解释型语言，编译器会把java代码编程为中间代码，然后在java虚拟机中运行，因此java可以跨平台<br>  行，具有良好的可移植性<br>  <font face="STCAIYUN" color="#0099ff" size="3">我的理解是:编辑器将java代码编译成适合于不同平台的中间代码</font></p>
+</blockquote>
+<h3 id="对public-static-void-main-String-args-理解？"><a href="#对public-static-void-main-String-args-理解？" class="headerlink" title="对public static void main(String[] args)理解？"></a>对public static void main(String[] args)理解？</h3><p><strong>public</strong>:  对任何类和对象都可以访问这个方法。<br><strong>static</strong> :  表明main方法是一个静态方法，方法中的代码是存储在静态存储区的<br>只要类被加载后，说明代码就加载到了静态区域，就可以直接通过类名.main()直接访问， JVM启动后就可以按照上述方法的签名来找到方法的入口地址，找到就执行，找不到就报错。</p>
+<h3 id="java程序是怎样运行的？"><a href="#java程序是怎样运行的？" class="headerlink" title="java程序是怎样运行的？"></a>java程序是怎样运行的？</h3><p>java初始化：<br>（1）静态变量  先于 非静态变量 ，静态对象只初始化一次，非晶态的会初始化很多次<br><strong>父类 先于 子类</strong><br>变量  先于 代码块<br>==&gt; 父类静态变量、父类静态代码块、子类静态变量、子类静态代码块、父类非静态代码块，父类构造函数、子类非晶态变量、子类非晶态代码块、子类构造函数</p>
+<h3 id="java创建对象"><a href="#java创建对象" class="headerlink" title="java创建对象"></a>java创建对象</h3><ol>
+<li>new 创建<br>new 操作符的本意就是创建一个对象，首先看new后面的数值类型，知道了类型，然后才知道要分配多大的内存空间，分配完内存之后，再调用构造函数，填充这个对象的各个域（初始化），一个对象创建完毕后，把它的引用发布到外部去，在外部就可以通过引用来操纵这个对象。<br>new 创建的对象本体都在堆区，堆区主要放对象<br>栈区放引用</li>
+<li>clone<br>分配内存都一样，但是内存的大小是根据调用clone方法的对象的大小相同，然后再使用原对象对应的各个域，填充新对象，引用发布出去<br>浅clone: 如果对象中有些域也是引用，那么clone的只是引用<br>深clone: 因为有个super.clone(), 会引发引用指向的值都clone需要实现Cloneable接口，实现clone方法，并且在这个方法内部，把该对象引用的其他对象也clone因为有个super.clone(), 会引发引用指向的值都clone</li>
+</ol>
+<h3 id="什么是反射机制"><a href="#什么是反射机制" class="headerlink" title="什么是反射机制"></a>什么是反射机制</h3><p>反射机制就是在程序运行时能够获取自身的信息，<br>反射机制的作用<br>（1) 反编译： .class –&gt; .java<br>   (2) 通过反射机制来访问java对象的属性、方法、构造方法等。<br>   反射机制的类：<br>   java.lang.Class<br>   java.lang.reflect.Constructor<br>   java.lang.reflect.Field<br>   java.lang.reflect.Modifier<br>   一般步骤：先获取到类<br>   Class c = Class.forName(“xxx”)<br>   然后在获取这个类中的信息</p>
+<h3 id="java泛型"><a href="#java泛型" class="headerlink" title="java泛型"></a>java泛型</h3><p>独特之处：java泛型只在程序源码中存在，在编译后的字节码文件中，都已经被替换为原来的原始类型（就是指被擦除了类型的泛型），并在相应的位置插入了强行转型代码。<br>用反射机制理解：在程序中定义了一个ArrayList泛型类型实例化为Integer的对象，如果直接调用add方法，那么只能存储整形的数据。不过当我们利用反射调用add方法的时候，却可以存储字符串。<br>Array不支持泛型，一般用List来代替Array</p>
+<h3 id="多态实现问题？"><a href="#多态实现问题？" class="headerlink" title="多态实现问题？"></a>多态实现问题？</h3><p>编译时多态<br>运行时多态</p>
+<h3 id="动态绑定-amp-amp-静态绑定"><a href="#动态绑定-amp-amp-静态绑定" class="headerlink" title="动态绑定&amp;&amp;静态绑定"></a>动态绑定&amp;&amp;静态绑定</h3><p>用private, static,final修饰变量或者方法时，采用的是静态绑定<br>重载的方法是使用静态绑定完成，而重写的方法使用的是动态绑定<br>有利于java的效率</p>
+<h3 id="抽象类与接口类"><a href="#抽象类与接口类" class="headerlink" title="抽象类与接口类"></a>抽象类与接口类</h3><p>(1) 抽象类和接口都不能实例化，如果要实例化，抽象类变量必须指向实现所有抽象方法的子类对象，接口变量必须指向实现所有接口方法的类对象。<br>(2) 抽象类可以有普通成员变量，构造方法，静态方法，非抽象类的普通方法，接口中没有，而且只有抽象方法<br>(3) 都可以含有静态变量，接口类的变量只能是public static fianl<br>抽象类的静态成员变量访问类型可以是非public<br>(4)可以实现多个接口，但只能继承一个抽象类。<br>(5) 抽象类对类抽象，接口是对行为抽象</p>
+<h3 id="final-理解"><a href="#final-理解" class="headerlink" title="final 理解"></a>final 理解</h3><p>(1) final 为用于标识变量的关键字，final标识的存储在常量池里<br>(2) final不能被子类的方法覆盖，但可以被继承。<br>(3) final 成员变量表示常量，赋值后不再改变<br>(4) final类不能被继承，防止任何继承类修改它的意义和实现</p>
+<h3 id="static理解"><a href="#static理解" class="headerlink" title="static理解"></a>static理解</h3><p>static表示全局，修饰成员变量和成员方法，</p>
+<h3 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h3><h3 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h3><h3 id="instanceof作用"><a href="#instanceof作用" class="headerlink" title="instanceof作用"></a>instanceof作用</h3><h3 id="字符串创建与存储"><a href="#字符串创建与存储" class="headerlink" title="字符串创建与存储"></a>字符串创建与存储</h3><h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h2 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h2><h2 id="maven相关操作"><a href="#maven相关操作" class="headerlink" title="maven相关操作"></a>maven相关操作</h2><h2 id="网络相关知识"><a href="#网络相关知识" class="headerlink" title="网络相关知识"></a>网络相关知识</h2>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语言/">语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java基础"><span class="nav-number">1.</span> <span class="nav-text">java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java语言的优点"><span class="nav-number">1.1.</span> <span class="nav-text">java语言的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对public-static-void-main-String-args-理解？"><span class="nav-number">1.2.</span> <span class="nav-text">对public static void main(String[] args)理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java程序是怎样运行的？"><span class="nav-number">1.3.</span> <span class="nav-text">java程序是怎样运行的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java创建对象"><span class="nav-number">1.4.</span> <span class="nav-text">java创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是反射机制"><span class="nav-number">1.5.</span> <span class="nav-text">什么是反射机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java泛型"><span class="nav-number">1.6.</span> <span class="nav-text">java泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态实现问题？"><span class="nav-number">1.7.</span> <span class="nav-text">多态实现问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态绑定-amp-amp-静态绑定"><span class="nav-number">1.8.</span> <span class="nav-text">动态绑定&&静态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类与接口类"><span class="nav-number">1.9.</span> <span class="nav-text">抽象类与接口类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final-理解"><span class="nav-number">1.10.</span> <span class="nav-text">final 理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static理解"><span class="nav-number">1.11.</span> <span class="nav-text">static理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile关键字"><span class="nav-number">1.12.</span> <span class="nav-text">volatile关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发编程"><span class="nav-number">1.13.</span> <span class="nav-text">并发编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof作用"><span class="nav-number">1.14.</span> <span class="nav-text">instanceof作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串创建与存储"><span class="nav-number">1.15.</span> <span class="nav-text">字符串创建与存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件"><span class="nav-number">1.16.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">1.17.</span> <span class="nav-text">异常处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库基础"><span class="nav-number">2.</span> <span class="nav-text">数据库基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven相关操作"><span class="nav-number">3.</span> <span class="nav-text">maven相关操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络相关知识"><span class="nav-number">4.</span> <span class="nav-text">网络相关知识</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2017 - 2017 Candice&#39; Blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Candice&#39; Blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 CandiceGuo All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
