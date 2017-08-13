@@ -157,8 +157,10 @@ html{
     line-height: 1.428571429;
     background-color: #fff;
     border: 1px solid #fff;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    /*webkit-transition: all 0.5s ease-in-out;*/
+    -webkit-transition: all 20s ease-in-out;
+    /*transition: all 0.5s ease-in-out;*/
+    transition: all 20s ease-in-out;
 }
 .thumb:hover{
 	opacity: 0.95;
