@@ -11,19 +11,21 @@
   
   
   
-  <meta name="description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开">
+  <meta name="description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开，借鉴了Note 1的编写思路，但是也掺杂了自己的">
 <meta name="keywords" content="学术,NLP,DeepLearning,CS224">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS224 lesson2—Main Line">
 <meta property="og:url" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/index.html">
 <meta property="og:site_name" content="Candice&#39; Blog">
-<meta property="og:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开">
+<meta property="og:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开，借鉴了Note 1的编写思路，但是也掺杂了自己的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/svd.jpg">
-<meta property="og:updated_time" content="2017-08-21T01:45:02.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/eg1.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/eg2.jpg">
+<meta property="og:updated_time" content="2017-08-21T07:49:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS224 lesson2—Main Line">
-<meta name="twitter:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开">
+<meta name="twitter:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开，借鉴了Note 1的编写思路，但是也掺杂了自己的">
 <meta name="twitter:image" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/svd.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Candice&#39; Blog" type="application/atom+xml">
@@ -194,7 +196,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><em>The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models.</em></p>
-<p><em>本章节主要通过 ”How to represent words?“ 这一话题展开</em></p>
+<p><em>本章节主要通过 ”How to represent words?“ 这一话题展开</em>，借鉴了Note 1的编写思路，但是也掺杂了自己的一些小想法，重在理解:happy:</p>
 <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
@@ -205,22 +207,22 @@
 </blockquote>
 <p>　　上面的 <em>fact</em> ，我们可以对word形成最简单的理解，若给每个word标记一个index，单词的表示方式为<br>$$<br>w_i = (0,0,…,0,1,0,…,0,0)^T     ( 0&lt;= i &lt; |V|)<br>$$<br>　　|v|表示单词表中的单词总量，index = i 位置为 1 表示：wi 为单词表中index = i处的单词。</p>
 <p>　　这种向量我们称为 <strong>one-hot vector</strong></p>
-<p>　　此时我们想到</p>
+<p>　　但是，我相信任何人都不希望用这种向量来represent a word，原因是：</p>
 <blockquote>
 <p>All of the words are not completely unrelated.</p>
 <p>If we encode all semantics of our language, perhaps there actually exists some N-dimensional space and N &lt;&lt; 13 million.</p>
 </blockquote>
-<p>　　然而<strong>one-hot vector 引起的问题</strong>是：</p>
+<p>　　然而，<strong>one-hot vector 引起的问题</strong>是：</p>
 <ul>
-<li>One-hot vector represent  each word as a completely independent entity. For instance,* </li>
+<li><em>One-hot vector represent  each word as a completely independent entity. For instance,</em></li>
 </ul>
-<p>$$<br>(w^{hotel})^Tw^{motel} = (w^{hotel})^Tw^{cat} = 0<br>$$<br><em>This word representation does not give us directly any idea of the relationship of two different words.</em></p>
+<p>$$<br>(w^{hotel})^Tw^{motel} = (w^{hotel})^Tw^{cat} = 0<br>$$<br>　　<em>This word representation does not give us directly any idea of the relationship of two different words.</em></p>
 <ul>
 <li><p><em>The dimensions of one-hot vector is really big. They are beyond the limits of computer ability.</em> </p>
 <p>​</p>
 </li>
 </ul>
-<p>　　此时顿悟到我们需要的representation of the word 有以下几个特点</p>
+<p>　　此时恍然顿悟到我们需要的 representation of the word 有以下几个特点</p>
 <ul>
 <li><em>The dimension should be as small as possible and the computer can  easily handle these vectors.</em></li>
 </ul>
@@ -229,9 +231,30 @@
 <p>​</p>
 </li>
 </ul>
-<h3 id="1-2-Word-Representation-Based-on-SVD"><a href="#1-2-Word-Representation-Based-on-SVD" class="headerlink" title="1.2  Word Representation Based on SVD"></a>1.2  Word Representation Based on SVD</h3><p>　　　由上面的叙述可知，我们更想找到的是一种word embeddings方法，也就是说我们更想知道的是能否存在某种向量可以 find a subspace that can encode the relationships between words， 这种关系可以更形象的称之为“语义”（Semantic）。而SVD（Singular Value Decomposition)方法可以帮助我们。</p>
-<p>　　为了形成解决思路，我们首先看一下SVD的表达式<br>$$<br>A = U\sum V^T<br>$$<br>　　 通过上面这个公式，我们可以直观的看到SVD算法似乎是将一个矩阵分解成了几个向量的乘积的形式。而分解的结果我们可以通过下图看到，</p>
+<hr>
+<h3 id="1-2-Word-Representation-Based-on-SVD"><a href="#1-2-Word-Representation-Based-on-SVD" class="headerlink" title="1.2  Word Representation Based on SVD"></a>1.2  Word Representation Based on SVD</h3><p>　　由上面的叙述可知，我们更想找到的是一种 word embeddings 方法，也就是说我们更想知道的是能否存在某种向量可以  find a subspace that can encode the relationships between words， 这种关系可以更形象的称之为“语义”（Semantic）。而SVD（Singular Value Decomposition)方法可以帮助我们。</p>
+<p>　　为了形成解决思路，我们首先看一下SVD的表达式<br>$$<br>A = U\sum V^T<br>$$<br>　　通过上面这个公式，我们可以直观的看到SVD算法似乎是将一个矩阵分解成了几个向量的乘积的形式。而分解的结果我们可以通过下图看到，</p>
 <p><img src="/2017/08/21/CS224-lesson2—Main-Line/svd.jpg" alt=""></p>
+<p>　　如果我们将A矩阵看做是一个Corpus的所有word vector组成的矩阵，那么我们可以通过SVD来对这个庞大的A矩阵进行分解，采用U矩阵的行向量来作为word vector，从而达到降维的效果<br>$$<br>(0,0,…,0,1,0,…,0,0)^T     —&gt;  (u_1,u_2,…,u_r)<br>$$<br>　　将一个维度为|V|的向量变换成维度为r的向量，其中  r &lt;&lt; |V| 。在这里重申一遍降维的含义：降维意味着对语义进行编码，但是我们并不关心这种语义具体是什么，毕竟语义都是我们人为规定的。</p>
+<p><em>SVD的原理可以查看我的下一篇博文  <a href="">CS224 lesson2—Reference 1 : SVD (Singular Value Decomposition)</a></em></p>
+<h4 id="1-2-1-矩阵A的表示"><a href="#1-2-1-矩阵A的表示" class="headerlink" title="1.2.1  矩阵A的表示"></a>1.2.1  矩阵A的表示</h4><p>现在思路已经清晰，我们现在的首要问题矩阵 A 的表示：</p>
+<p>（1）Word-Document Matrix</p>
+<blockquote>
+<p><em>A bold hypothesis is that related words will often appear in the same documents.</em> </p>
+</blockquote>
+<p>例如，</p>
+<p>  “banks”,”stocks”,”money” 这几个单词经常出现在一个document中。</p>
+<p>  “banks”,”bananas”,”rocky” 这几个单词不太可能出现在一个document中。</p>
+<p>假设，document~i~  我们用一个向量 a~i~来表示<br>$$<br>a<em>i = (a</em>{i1},a<em>{i2},….,a</em>{in})^T<br>$$<br>其中n = |V|，a~ij~ 表示document~i~ 含有的word~j~ 的个数。如果我们有 M 个documents，<br>$$<br>A= (a_1,a_2,…,a_M)<br>$$<br>此时，我们可能会担心是否又到了问题的原点，因为也许这里有more than billions of documents 等待着我们去 loop。看来我们需要另辟蹊径。</p>
+<p>（2）Window based Co-occurence Matrix</p>
+<p>我们仍然认为 co-occurences of words 有一定的关系，而另矩阵 A 来存储这种关系。我们的方法是：</p>
+<p><em>Counting the number of times each word appears inside a window of a particular size around the word of interest.</em></p>
+<p>也就是，计算我们感兴趣的词（称之为center word）的某个长度的窗口中所有词的出现个数。假如，我感兴趣的单词是“like”，设定的窗口长度为2。</p>
+<p><img src="/2017/08/21/CS224-lesson2—Main-Line/eg1.jpg" alt="eg1"></p>
+<p>可知当中心词为like时， “I” 出现2次，其他单词出现1次。</p>
+<p>借用 Note1 中的例子：</p>
+<p><img src="/2017/08/21/CS224-lesson2—Main-Line/eg2.jpg" alt="eg2"></p>
+<p>这里的 X 矩阵就是我们要求的A矩阵， 所以矩阵 A 的维度为 |V|*|V|。</p>
 </the>
       
     </div>
@@ -264,7 +287,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-思路"><span class="nav-text">1.  思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-One-Hot-Vector"><span class="nav-text">1.1  One-Hot Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Word-Representation-Based-on-SVD"><span class="nav-text">1.2  Word Representation Based on SVD</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-思路"><span class="nav-text">1.  思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-One-Hot-Vector"><span class="nav-text">1.1  One-Hot Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Word-Representation-Based-on-SVD"><span class="nav-text">1.2  Word Representation Based on SVD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-矩阵A的表示"><span class="nav-text">1.2.1  矩阵A的表示</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
