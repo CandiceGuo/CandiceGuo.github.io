@@ -20,7 +20,7 @@
 <meta property="og:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2017/08/21/CS224-lesson2—Main-Line/svd.jpg">
-<meta property="og:updated_time" content="2017-08-21T01:15:58.000Z">
+<meta property="og:updated_time" content="2017-08-21T01:45:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS224 lesson2—Main Line">
 <meta name="twitter:description" content="The first and arguably most important common denominator across all NLP tasks is how we represent words as input to any of our models. 本章节主要通过 ”How to represent words?“ 这一话题展开">
@@ -203,27 +203,34 @@
 <h2 id="1-思路"><a href="#1-思路" class="headerlink" title="1.  思路"></a>1.  思路</h2><h3 id="1-1-One-Hot-Vector"><a href="#1-1-One-Hot-Vector" class="headerlink" title="1.1  One-Hot Vector"></a>1.1  One-Hot Vector</h3><blockquote>
 <p><em>There are an estimated 13 million(1.3亿）tokens for the English language.（1）</em></p>
 </blockquote>
-<p>上面的 <em>fact</em> ，我们可以对word形成最简单的理解，若给每个word标记一个index，单词的表示方式为<br>$$<br>w_i = (0,0,…,0,1,0,…,0,0)^T     ( 0&lt;= i &lt; |V|)<br>$$<br>|v|表示单词表中的单词总量，index = i位置为1表示：wi为单词表中index = i处的单词。</p>
-<p>这种向量我们称为 <strong>one-hot vector</strong></p>
-<p>此时我们想到</p>
+<p>　　上面的 <em>fact</em> ，我们可以对word形成最简单的理解，若给每个word标记一个index，单词的表示方式为<br>$$<br>w_i = (0,0,…,0,1,0,…,0,0)^T     ( 0&lt;= i &lt; |V|)<br>$$<br>　　|v|表示单词表中的单词总量，index = i 位置为 1 表示：wi 为单词表中index = i处的单词。</p>
+<p>　　这种向量我们称为 <strong>one-hot vector</strong></p>
+<p>　　此时我们想到</p>
 <blockquote>
 <p>All of the words are not completely unrelated.</p>
 <p>If we encode all semantics of our language, perhaps there actually exists some N-dimensional space and N &lt;&lt; 13 million.</p>
 </blockquote>
-<p>然而<strong>one-hot vector 引起的问题</strong>是：</p>
-<ol>
-<li><p><em>One-hot vector represent  each word as a completely independent entity. For instance,</em><br>$$<br>(w^{hotel})^Tw^{motel} = (w^{hotel})^Tw^{cat} = 0<br>$$<br><em>This word representation does not give us directly any idea of the relationship of two different words.</em></p>
-</li>
+<p>　　然而<strong>one-hot vector 引起的问题</strong>是：</p>
+<ul>
+<li>One-hot vector represent  each word as a completely independent entity. For instance,* </li>
+</ul>
+<p>$$<br>(w^{hotel})^Tw^{motel} = (w^{hotel})^Tw^{cat} = 0<br>$$<br><em>This word representation does not give us directly any idea of the relationship of two different words.</em></p>
+<ul>
 <li><p><em>The dimensions of one-hot vector is really big. They are beyond the limits of computer ability.</em> </p>
+<p>​</p>
 </li>
-</ol>
-<p>此时我们顿悟到我们需要的representation of the word 有以下几个特点</p>
-<ol>
+</ul>
+<p>　　此时顿悟到我们需要的representation of the word 有以下几个特点</p>
+<ul>
 <li><em>The dimension should be as small as possible and the computer can  easily handle these vectors.</em></li>
-<li><em>This kind of word representation can give us any directly notion of the word similariy</em></li>
-</ol>
-<h3 id="1-2-Word-Representation-Based-on-SVD"><a href="#1-2-Word-Representation-Based-on-SVD" class="headerlink" title="1.2  Word Representation Based on SVD"></a>1.2  Word Representation Based on SVD</h3><p>​        由上面的叙述可知，我们更想找到的是一种word embeddings方法，也就是说我们更想知道的是能否存在某种向量可以 find a subspace that can encode the relationships between words， 这种关系可以更形象的称之为“语义”（Semantic）。而SVD（Singular Value Decomposition)方法可以帮助我们。</p>
-<p>​       为了形成解决思路，我们首先看一下SVD的表达式<br>$$<br>A = U\sum V^T<br>$$<br>​      通过上面这个公式，我们可以直观的看到SVD算法似乎是将一个矩阵分解成了几个向量的乘积的形式。而分解的结果我们可以通过下图看到，</p>
+</ul>
+<ul>
+<li><p><em>This kind of word representation can give us any directly notion of the word similariy</em></p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="1-2-Word-Representation-Based-on-SVD"><a href="#1-2-Word-Representation-Based-on-SVD" class="headerlink" title="1.2  Word Representation Based on SVD"></a>1.2  Word Representation Based on SVD</h3><p>　　　由上面的叙述可知，我们更想找到的是一种word embeddings方法，也就是说我们更想知道的是能否存在某种向量可以 find a subspace that can encode the relationships between words， 这种关系可以更形象的称之为“语义”（Semantic）。而SVD（Singular Value Decomposition)方法可以帮助我们。</p>
+<p>　　为了形成解决思路，我们首先看一下SVD的表达式<br>$$<br>A = U\sum V^T<br>$$<br>　　 通过上面这个公式，我们可以直观的看到SVD算法似乎是将一个矩阵分解成了几个向量的乘积的形式。而分解的结果我们可以通过下图看到，</p>
 <p><img src="/2017/08/21/CS224-lesson2—Main-Line/svd.jpg" alt=""></p>
 </the>
       
